@@ -1,22 +1,22 @@
 resources:
 ###################### NATIVE WAR CI/CD RESOURCES #########################
 # S3 WAR reference
- - name: demo_war_s3
-   type: file
-   integration: "ttrahan-aws"
-   pointer:
-     sourceName: "shipdemo-java-s3-ec2/builds"
-   seed:
-     versionName: master.1/HelloWorld.war
+- name: demo_war_s3
+  type: file
+  integration: "ttrahan-aws"
+  pointer:
+    sourceName: "shipdemo-java-s3-ec2/builds"
+  seed:
+    versionName: master.1/HelloWorld.war
 
 # aws CLI config
- - name: demo_war_awscli
-   type: cliConfig
-   integration: ttrahan-aws
-   pointer:
-     region: us-east-1
+- name: demo_war_awscli
+  type: cliConfig
+  integration: ttrahan-aws
+  pointer:
+    region: us-east-1
 
 # VM Cluster
- - name: demo_war_test_cls
-   type: cluster
-   integration: "demo-vm-cluster"
+- name: demo_war_test_cls
+  type: cluster
+  integration: "demo-vm-cluster"

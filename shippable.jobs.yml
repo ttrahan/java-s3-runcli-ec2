@@ -2,15 +2,31 @@ jobs:
 
 ######################### NATIVE WAR CI/CD JOBS #########################
 
-# runCLI job that deploys artifact in S3 to EC2
- - name: demo_war_test_deploy
-   type: runCLI
-   steps:
-     - IN: demo_war_s3
-     - IN: demo_war_test_cls
-     - IN: demo_war_awscli
-     - TASK:
-       - script: aws s3 cp s3://$DEMO_WAR_S3_SOURCENAME/$DEMO_WAR_S3_VERSIONNAME ~/HelloWorld.war
-       - script: echo "Latest build is in S3 at "$DEMO_WAR_S3_SOURCENAME/$DEMO_WAR_S3_VERSIONNAME
-       - script: echo -e "$DEMO_WAR_TEST_CLS_INTEGRATION_PRIVATEKEY" > ~/.ssh/ec2-node && sudo chmod 600 ~/.ssh/ec2-node && echo "identity file created"
-       - script: scp -v -i ~/.ssh/ec2-node ~/HelloWorld.war shippable@ec2-54-173-201-230.compute-1.amazonaws.com:~
+# runCLI job that deploys artifact in S3 to EC2 - TEST
+- name: demo_war_test_deploy
+  type: runCLI
+  steps:
+    - IN: demo_war_s3
+    - IN: demo_war_test_cls
+    - IN: demo_war_awscli
+    - TASK:
+      - script: aws s3 cp s3://$DEMO_WAR_S3_SOURCENAME/$DEMO_WAR_S3_VERSIONNAME ~/HelloWorld.war
+      - script: echo "Latest build is in S3 at "$DEMO_WAR_S3_SOURCENAME/$DEMO_WAR_S3_VERSIONNAME
+      - script: echo -e "$DEMO_WAR_TEST_CLS_INTEGRATION_PRIVATEKEY" > ~/.ssh/ec2-node && sudo chmod 600 ~/.ssh/ec2-node && echo "identity file created"
+      - script: scp -v -i ~/.ssh/ec2-node ~/HelloWorld.war shippable@ec2-54-173-201-230.compute-1.amazonaws.com:~
+      - script: echo -e "export LATEST_TEST_DEPLOY=$DEMO_WAR_S3_VERSIONNAME" > $DEMO_WAR_TEST_DEPLOY_STATE/test_state.env
+
+# runCLI job that deploys artifact in S3 to EC2 - PROD
+- name: demo_war_prod_deploy
+  type: runCLI
+  steps:
+    - IN: demo_war_test_deploy
+    - IN: demo_war_s3
+    - IN: demo_war_test_cls
+    - IN: demo_war_awscli
+    - TASK:
+      - script: ls -al $DEMO_WAR_TEST_DEPLOY_PATH
+      # - script: aws s3 cp s3://$DEMO_WAR_S3_SOURCENAME/$DEMO_WAR_S3_VERSIONNAME ~/HelloWorld.war
+      # - script: echo "Latest build is in S3 at "$DEMO_WAR_S3_SOURCENAME/$DEMO_WAR_S3_VERSIONNAME
+      # - script: echo -e "$DEMO_WAR_TEST_CLS_INTEGRATION_PRIVATEKEY" > ~/.ssh/ec2-node && sudo chmod 600 ~/.ssh/ec2-node && echo "identity file created"
+      # - script: scp -v -i ~/.ssh/ec2-node ~/HelloWorld.war shippable@ec2-54-173-201-230.compute-1.amazonaws.com:~
