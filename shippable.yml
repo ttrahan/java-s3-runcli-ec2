@@ -1,0 +1,37 @@
+language: java
+
+jdk:
+  - oraclejdk8
+
+env:
+  global:
+    - S3_BUCKET=shipdemo-java-s3-ec2
+
+build:
+  pre_ci_boot:
+    image_name: drydock/u14
+    image_tag: tip
+    pull: true
+    options: '--privileged=true --net=bridge'
+
+  ci:
+    - sudo wget http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+    - sudo tar xzf apache-maven-3.3.9-bin.tar.gz -C /usr/local && rm -f apache-maven-3.3.9-bin.tar.gz
+    - ln -fs /usr/local/apache-maven-$3.3.9/bin/mvn /usr/bin
+    - echo "export PATH=$PATH:/usr/local/apache-maven-3.3.9/bin" >> $HOME/.bashrc
+    - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
+    - /usr/local/apache-maven-3.3.9/bin/mvn -q -B clean cobertura:cobertura install
+    - ls -al $SHIPPABLE_BUILD_DIR/target
+    - aws s3 cp $SHIPPABLE_BUILD_DIR/target/HelloWorld.war s3://$S3_BUCKET/builds/$BRANCH.$BUILD_NUMBER/HelloWorld.war
+
+integrations:
+  hub:
+    - integrationName: ttrahan-ecr
+      type: ecr
+
+  notifications:
+    - integrationName: demo-war-hook
+      type: webhook
+      payload:
+        - versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war
+      on_success: always
