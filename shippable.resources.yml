@@ -19,4 +19,4 @@ resources:
 # VM Cluster
   - name: demo_war_s3_test_cls
     type: cluster
-    integration: "demo-vm-cluster"
+    integration: "demo-war-s3-vm-cluster"

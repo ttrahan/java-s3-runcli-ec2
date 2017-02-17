@@ -30,7 +30,7 @@ integrations:
       type: ecr
 
   notifications:
-    - integrationName: demo-war-hook
+    - integrationName: demo-war-s3-hook
       type: webhook
       payload:
         - versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war
