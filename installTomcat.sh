@@ -48,7 +48,7 @@ fi
 
 # ensure scripts are executable and webapps folder is writeable
 sudo chmod 755 /opt/$TOMCAT_DIR/bin/*.sh
-sudo chmod 755 /opt/$TOMCAT_DIR/webapps/
+sudo chmod 770 /opt/$TOMCAT_DIR/webapps/
 
 # make tomweb owner of the tomcat files/directories
 cd /opt
