@@ -21,6 +21,7 @@ jobs:
     type: runCLI
     steps:
       - IN: demo_war_s3_test_deploy
+        switch: off
       - IN: demo_war_s3_file
       - IN: demo_war_s3_test_cls
       - IN: demo_war_s3_awscli
