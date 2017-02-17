@@ -17,6 +17,6 @@ resources:
       region: us-east-1
 
 # VM Cluster
-  - name: demo_war_s3_test_cls
+  - name: demo_war_s3_cls
     type: cluster
     integration: "demo-war-s3-vm-cluster"
