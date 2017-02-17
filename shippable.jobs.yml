@@ -13,7 +13,7 @@ jobs:
         - script: aws s3 cp s3://$DEMO_WAR_S3_FILE_SOURCENAME/$DEMO_WAR_S3_FILE_VERSIONNAME ~/HelloWorld.war
         - script: echo "Latest build is in S3 at "$DEMO_WAR_S3_FILE_SOURCENAME/$DEMO_WAR_S3_FILE_VERSIONNAME
         - script: echo -e "$DEMO_WAR_S3_TEST_CLS_INTEGRATION_PRIVATEKEY" > ~/.ssh/ec2-node && sudo chmod 600 ~/.ssh/ec2-node && echo "identity file created"
-        - script: scp -v -i ~/.ssh/ec2-node ~/HelloWorld.war shippable@ec2-54-173-201-230.compute-1.amazonaws.com:~
+        - script: scp -i ~/.ssh/ec2-node ~/HelloWorld.war shippable@ec2-54-173-201-230.compute-1.amazonaws.com:/opt/tomcat/webapps
         - script: echo -e "LATEST_TEST_DEPLOY=$DEMO_WAR_S3_FILE_VERSIONNAME" >> $DEMO_WAR_S3_TEST_DEPLOY_STATE/test_state.env
 
 # runCLI job that deploys artifact in S3 to EC2 - PROD
