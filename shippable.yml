@@ -25,9 +25,7 @@ build:
     - aws s3 cp $SHIPPABLE_BUILD_DIR/target/HelloWorld.war s3://$S3_BUCKET/builds/$BRANCH.$BUILD_NUMBER/HelloWorld.war
 
   on_success:
-    - echo versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war > /build/state/demo-war-s3-file.env
-    - ls -l /build/state
-    - cat /build/state/demo-war-s3-file.env
+    - echo versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war > /build/state/demo_war_s3_file.env
 
 integrations:
   hub:
