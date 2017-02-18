@@ -55,13 +55,13 @@ will be deployed to your Amazon EC/2 Test instance and be ready to manually depl
 Prod instance, as well.
 
 ### CI console screenshot
-![CI Console Log](https://github.com/shippableSamples/java-s3-runcli-ec2/resources/images/java-s3-ec2-CI.png)
+![CI Console Log](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-CI.png)
 
 ### VM node cluster integration screenshot
-![Integration View](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-CI.png)
+![Integration View](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-integration.png)
 
 ### CD Pipeline SPOG screenshot
-![CD Pipeline](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-integration.png)
+![CD Pipeline](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-CD.png)
 
 ### Launch Tomcat instances for this demo
 
