@@ -58,7 +58,7 @@ Prod instance, as well.
 ![CI Console Log](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-CI.png)
 
 ### VM node cluster integration screenshot
-![Integration View](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-integration.png)
+![Integration View](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-vm-integration.png)
 
 ### CD Pipeline SPOG screenshot
 ![CD Pipeline](https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/resources/images/java-s3-ec2-CD.png)
