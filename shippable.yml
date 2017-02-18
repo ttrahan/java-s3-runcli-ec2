@@ -27,10 +27,10 @@ build:
   on_success:
     - echo versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war > /build/state/demo_war_s3_file.env
 
-# integrations:
-#   hub:
-#     - integrationName: ttrahan-ecr
-#       type: ecr
+integrations:
+  hub:
+    - integrationName: ttrahan-ecr
+      type: ecr
 
   # notifications:
   #   - integrationName: demo-war-s3-hook
