@@ -24,14 +24,17 @@ build:
     - ls -al $SHIPPABLE_BUILD_DIR/target
     - aws s3 cp $SHIPPABLE_BUILD_DIR/target/HelloWorld.war s3://$S3_BUCKET/builds/$BRANCH.$BUILD_NUMBER/HelloWorld.war
 
+  on_success:
+    - echo versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war > /build/state/demo-war-s3-file.env
+
 integrations:
   hub:
     - integrationName: ttrahan-ecr
       type: ecr
 
-  notifications:
-    - integrationName: demo-war-s3-hook
-      type: webhook
-      payload:
-        - versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war
-      on_success: always
+  # notifications:
+  #   - integrationName: demo-war-s3-hook
+  #     type: webhook
+  #     payload:
+  #       - versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war
+  #     on_success: always

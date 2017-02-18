@@ -2,6 +2,12 @@ jobs:
 
 ######################### NATIVE WAR CI/CD JOBS #########################
 
+# runCI job that builds and pushes artifact to S3
+  - name: java-s3-runcli-ec2_runCI
+    type: runCI
+    steps:
+      - OUT: demo_war_s3_file 
+
 # runCLI job that deploys artifact in S3 to EC2 - TEST
   - name: demo_war_s3_test_deploy
     type: runCLI
