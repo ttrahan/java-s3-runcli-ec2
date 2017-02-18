@@ -66,7 +66,7 @@ Prod instance, as well.
 ### Launch Tomcat instances for this demo
 
 A script for launching Tomcat instances on Amazon EC/2 can be found here:
-https://github.com/shippableSamples/java-s3-runcli-ec2/installTomcat.sh
+https://github.com/shippableSamples/java-s3-runcli-ec2/blob/master/installTomcat.sh
 
 Read the comments within the script for instructions.
 
