@@ -6,6 +6,7 @@ jobs:
   - name: java-s3-runcli-ec2_runCI
     type: runCI
     steps:
+      - IN: demo_war_s3_awscli
       - OUT: demo_war_s3_file 
 
 # runCLI job that deploys artifact in S3 to EC2 - TEST
