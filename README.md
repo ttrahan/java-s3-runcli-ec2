@@ -37,12 +37,14 @@ with your specific values
 * Right-click on the runCLI job in the SPOG view named 'demo-war-s3-test-deploy' 
 and run the job
   * This demo uses custom scripting jobs called 'runCLI' jobs in Shippable - 
-  [learn how moe about runCLI jobs here](http://docs.shippable.com/pipelines/jobs/runCLI/) 
+  [learn how more about runCLI jobs here](http://docs.shippable.com/pipelines/jobs/runCLI/) 
 * Your app should be deployed to your VM cluster representing your Test environment
+  * See http://{your-IP-address}:{your-test-env-port}/HelloWorld/hello in your browser
 * Follow instructions to [connect your Continuous Integration project to your 
 Continuous Delivery pipelines](http://docs.shippable.com/tutorials/pipelines/connectingCiPipelines/)
 * Right-click on the runCLI job in the SPOG view named 'demo-war-s3-prod-deploy'
-and run the job to deploy to a Prod pod
+and run the job to deploy to your Prod instance
+  * See http://{your-IP-address}:{your-prod-env-port}/HelloWorld/hello in your browser
 * Make a change to your forked repo and commit to GitHub - watch your pipeline 
 automatically execute CI with push to Amazon S3 and automatic deployment to the 
 Test environment in Amazon EC/2
