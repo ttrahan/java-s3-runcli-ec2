@@ -25,12 +25,10 @@ This repo demonstrates the following features:
 on Shippable for authenticating CI to AWS
 * Update the CI configuration in `shippable.yml` file with your integration names 
 (see comments in file)
-* Follow these [setup instructions](http://docs.shippable.com/ci/runFirstBuild/) 
-to enable your forked repo for CI and run a build 
 
 ## Add Continuous Delivery pipelines to deploy to Amazon EC/2
 
-* All pipeline config is in `shippable.resources.yml` and `shippable.jobs.yml` 
+* Pipeline configs are in `shippable.resources.yml` and `shippable.jobs.yml` 
 Check these files and update config wherever the comment asks you to replace 
 with your specific values
 * Create an integration for a [VM cluster](http://docs.shippable.com/integrations/deploy/nodeCluster)
