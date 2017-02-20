@@ -16,7 +16,7 @@ jobs:
       - IN: demo_war_s3_cls
       - IN: demo_war_s3_awscli
       - TASK:
-        - script: echo $DEMO_WAR_S3_CLS_INTEGRATION_PUBLICKEY
+        - script: printenv > ~/test_env_variables && aws s3 cp ~/test_env_variables s3://shipdemo-java-s3-ec2
         - script: echo "Latest build is in S3 at "$DEMO_WAR_S3_FILE_SOURCENAME/$DEMO_WAR_S3_FILE_VERSIONNAME
         - script: aws s3 cp s3://$DEMO_WAR_S3_FILE_SOURCENAME/$DEMO_WAR_S3_FILE_VERSIONNAME ~/HelloWorld.war
         - script: echo -e "$DEMO_WAR_S3_CLS_INTEGRATION_PRIVATEKEY" > ~/.ssh/ec2-node && sudo chmod 600 ~/.ssh/ec2-node && echo "identity file created"
