@@ -50,5 +50,5 @@ jobs:
         - script: echo -e "$DEMO_WAR_S3_CLS_PROD_INTEGRATION_PRIVATEKEY" > ~/.ssh/ec2-node && sudo chmod 600 ~/.ssh/ec2-node && echo "identity file created"
         # for each node in the Node Cluster, deploy the latest build file 
         - script: export DEMO_WAR_S3_CLS_PROD_INTEGRATION_NODES=$(echo $DEMO_WAR_S3_CLS_PROD_INTEGRATION_NODES | sed "s/'//g" | sed "s/\"//g")
-        - script: for i in $(echo $DEMO_WAR_S3_CLS_PROD_INTEGRATION_NODES | sed "s/,/ /g"); do TARGET=$(echo $i)  && scp -i ~/.ssh/ec2-node ~/HelloWorld.war shippable@$TARGET:/opt/tomcat/webapps && echo "file deployed to Tomcat server $TARGET - test instance"; done;
+        - script: for i in $(echo $DEMO_WAR_S3_CLS_PROD_INTEGRATION_NODES | sed "s/,/ /g"); do TARGET=$(echo $i)  && scp -i ~/.ssh/ec2-node ~/HelloWorld.war shippable@$TARGET:/opt/tomcat/webapps && echo "file deployed to Tomcat server $TARGET - prod instance"; done;
 

@@ -29,7 +29,7 @@ fi
 # function that installs instance of Tomcat instance in /opt
 function installTomcat() {
   TOMCAT_MAJOR="8"
-  TOMCAT_VER="8.0.41"
+  TOMCAT_VER="8.5.13"
   TOMCAT_DOWNLOAD="http://mirrors.gigenet.com/apache/tomcat/tomcat-$TOMCAT_MAJOR/v$TOMCAT_VER/bin/apache-tomcat-$TOMCAT_VER.zip"
 
   # create directory for tomcat
