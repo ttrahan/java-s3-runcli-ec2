@@ -13,7 +13,7 @@ jobs:
     type: runCLI
     steps:
       - IN: demo_war_s3_file
-      - IN: demo_war_s3_cls-test
+      - IN: demo_war_s3_cls_test
       - IN: demo_war_s3_awscli
       - TASK:
         # display location of latest build in S3
@@ -37,7 +37,7 @@ jobs:
         switch: off
       - IN: demo_war_s3_file
         switch: off
-      - IN: demo_war_s3_cls-prod
+      - IN: demo_war_s3_cls_prod
       - IN: demo_war_s3_awscli
       - TASK:
         # load last build version deployed to test from incoming state file
