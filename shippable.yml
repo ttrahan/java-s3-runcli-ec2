@@ -9,10 +9,10 @@ env:
 
 build:
   pre_ci_boot:
-    image_name: drydock/u14
+    image_name: drydock/u14jav
     image_tag: tip
     pull: true
-    options: '--privileged=true --net=bridge'
+    options: '--privileged=true --net=bridge -v /root/.m2'
 
   ci:
     - sudo wget http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
