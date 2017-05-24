@@ -12,7 +12,7 @@ build:
     image_name: drydock/u14jav
     image_tag: tip
     pull: true
-    options: '--privileged=true --net=bridge -v /root/.m2'
+    options: '--privileged=true --net=bridge -e HOME=/root -v /root/.m2'
 
   ci:
     - sudo wget http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
@@ -21,6 +21,7 @@ build:
     - echo "export PATH=$PATH:/usr/local/apache-maven-3.3.9/bin" >> $HOME/.bashrc
     - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
     - /usr/local/apache-maven-3.3.9/bin/mvn -q -B clean cobertura:cobertura install
+    - sleep 300 
     - ls -al $SHIPPABLE_BUILD_DIR/target
     - aws s3 cp $SHIPPABLE_BUILD_DIR/target/HelloWorld.war s3://$S3_BUCKET/builds/$BRANCH.$BUILD_NUMBER/HelloWorld.war
 
