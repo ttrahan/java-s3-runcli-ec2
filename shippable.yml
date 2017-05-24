@@ -20,7 +20,7 @@ build:
     - ln -fs /usr/local/apache-maven-$3.3.9/bin/mvn /usr/bin
     - echo "export PATH=$PATH:/usr/local/apache-maven-3.3.9/bin" >> $HOME/.bashrc
     - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
-    - /usr/local/apache-maven-3.3.9/bin/mvn --debug -B clean cobertura:cobertura install
+    - /usr/local/apache-maven-3.3.9/bin/mvn -B clean cobertura:cobertura install
     - sleep 300 
     - ls -al $SHIPPABLE_BUILD_DIR/target
     - aws s3 cp $SHIPPABLE_BUILD_DIR/target/HelloWorld.war s3://$S3_BUCKET/builds/$BRANCH.$BUILD_NUMBER/HelloWorld.war
