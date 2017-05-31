@@ -21,9 +21,8 @@ build:
     - echo "export PATH=$PATH:/usr/local/apache-maven-3.3.9/bin" >> $HOME/.bashrc
     - mkdir -p shippable/testresults && mkdir -p shippable/codecoverage
     - /usr/local/apache-maven-3.3.9/bin/mvn -B clean cobertura:cobertura install
-    - sleep 300 
     - ls -al $SHIPPABLE_BUILD_DIR/target
-    - aws s3 cp $SHIPPABLE_BUILD_DIR/target/HelloWorld.war s3://$S3_BUCKET/builds/$BRANCH.$BUILD_NUMBER/HelloWorld.war
+    # - aws s3 cp $SHIPPABLE_BUILD_DIR/target/HelloWorld.war s3://$S3_BUCKET/builds/$BRANCH.$BUILD_NUMBER/HelloWorld.war
 
   on_success:
     - echo versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war > /build/state/demo_war_s3_file.env
@@ -32,10 +31,3 @@ integrations:
   hub:
     - integrationName: ttrahan-ecr
       type: ecr
-
-  # notifications:
-  #   - integrationName: demo-war-s3-hook
-  #     type: webhook
-  #     payload:
-  #       - versionName=$BRANCH.$BUILD_NUMBER/HelloWorld.war
-  #     on_success: always
